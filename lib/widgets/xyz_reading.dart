@@ -1,5 +1,5 @@
-import 'package:emf_app/models/magnitudeProvider.dart';
-import 'package:emf_app/widgets/textWidget.dart';
+import 'package:emf_app/models/magnitude_provider.dart';
+import 'package:emf_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,8 +15,8 @@ class _XYZReadingState extends State<XYZReading> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 10),
-        Text('Update Interval'),
+        const SizedBox(height: 10),
+        const Text('Update Interval'),
         Consumer<MagnitudeProvider>(
           builder: (context, model, child) => Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -27,25 +27,25 @@ class _XYZReadingState extends State<XYZReading> {
                 onChanged: (dynamic value) => model.setUpdateInterval(
                     1, Duration.microsecondsPerSecond ~/ 1),
               ),
-              Text("1 FPS"),
+              const Text("1 FPS"),
               Radio(
                 value: 2,
                 groupValue: model.groupvalue,
                 onChanged: (dynamic value) => model.setUpdateInterval(
                     2, Duration.microsecondsPerSecond ~/ 30),
               ),
-              Text("30 FPS"),
+              const Text("30 FPS"),
               Radio(
                 value: 3,
                 groupValue: model.groupvalue,
                 onChanged: (dynamic value) => model.setUpdateInterval(
                     3, Duration.microsecondsPerSecond ~/ 60),
               ),
-              Text("60 FPS"),
+              const Text("60 FPS"),
             ],
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Consumer<MagnitudeProvider>(
           builder: (context, model, child) => Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

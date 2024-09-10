@@ -1,9 +1,9 @@
-import 'package:emf_app/models/magnitudeProvider.dart';
+import 'package:emf_app/models/magnitude_provider.dart';
 import 'package:emf_app/pages/visuals.dart';
 import 'package:emf_app/utils/colors.dart';
-import 'package:emf_app/widgets/mainReading.dart';
-import 'package:emf_app/widgets/meterReading.dart';
-import 'package:emf_app/widgets/xyzReading.dart';
+import 'package:emf_app/widgets/main_reading.dart';
+import 'package:emf_app/widgets/meter_reading.dart';
+import 'package:emf_app/widgets/xyz_reading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,54 +19,53 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
-      body: Center(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              MainReading(),
-              XYZReading(),
-              MeterReading(),
-              Container(
-                width: 200,
-                height: 50,
-                child: ElevatedButton(
+              const MainReading(),
+              const XYZReading(),
+              const MeterReading(),
+              Consumer<MagnitudeProvider>(
+                builder: (context, model, child) => ElevatedButton(
                     style: ButtonStyle(
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100),
-                            side: BorderSide(color: Colors.white))),
+                            side: const BorderSide(color: Colors.white))),
                         backgroundColor:
                             MaterialStateProperty.all(AppColors.primaryColor)),
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Visuals()));
+                      model.changeValues();
                     },
-                    child: Text('Visualize')),
+                    child: const Text('Start')),
               ),
-              SizedBox(
-                height: 10,
-              ),
+              ElevatedButton(
+                  style: ButtonStyle(
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100),
+                          side: const BorderSide(color: Colors.white))),
+                      backgroundColor:
+                          MaterialStateProperty.all(AppColors.primaryColor)),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Visuals()));
+                  },
+                  child: const Text('Visualize')),
               Consumer<MagnitudeProvider>(
-                builder: (context, model, child) => Container(
-                  width: 200,
-                  height: 50,
-                  child: ElevatedButton(
-                      style: ButtonStyle(
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(100),
-                                  side: BorderSide(color: Colors.white))),
-                          backgroundColor: MaterialStateProperty.all(
-                              AppColors.primaryColor)),
-                      onPressed: () {
-                        model.changeValues();
-                      },
-                      child: Text('Start')),
-                ),
+                builder: (context, model, child) => ElevatedButton(
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(100),
+                            side: const BorderSide(color: Colors.white))),
+                        backgroundColor:
+                            MaterialStateProperty.all(AppColors.primaryColor)),
+                    onPressed: () {
+                      model.changeValues();
+                    },
+                    child: const Text('Start')),
               ),
-
-              // StartButton()
             ],
           ),
         ),

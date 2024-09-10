@@ -1,4 +1,4 @@
-import 'package:emf_app/models/magnitudeProvider.dart';
+import 'package:emf_app/models/magnitude_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,35 +14,35 @@ class _MainReadingState extends State<MainReading> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Consumer<MagnitudeProvider>(
           builder: (context, model, child) => Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width / 2,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
                       model.magnitude.toStringAsFixed(2),
-                      style: TextStyle(
-                        fontSize: 40,
+                      style: const TextStyle(
+                        fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width / 2,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
                     Text(
                       ' μTesla',
                       style: TextStyle(
-                        fontSize: 40,
+                        fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

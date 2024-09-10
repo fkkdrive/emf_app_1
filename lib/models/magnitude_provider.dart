@@ -13,8 +13,8 @@ class MagnitudeProvider extends ChangeNotifier {
   List<LiveData> values = [];
 
   Vector3 magnetometer = Vector3.zero();
-  Vector3 _accelerometer = Vector3.zero();
-  Vector3 _absoluteOrientation2 = Vector3.zero();
+  final _accelerometer = Vector3.zero();
+  final Vector3 _absoluteOrientation2 = Vector3.zero();
   int? groupvalue = 2;
 
   changeValues() {
@@ -42,7 +42,7 @@ class MagnitudeProvider extends ChangeNotifier {
   setUpdateInterval(int? groupValue, int interval) {
     motionSensors.magnetometerUpdateInterval = interval;
     groupvalue = groupValue;
-    print(groupvalue);
+    debugPrint('$groupvalue');
     notifyListeners();
   }
 }

@@ -1,10 +1,10 @@
 import 'package:emf_app/home.dart';
-import 'package:emf_app/models/magnitudeProvider.dart';
+import 'package:emf_app/models/magnitude_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(new MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           theme: ThemeData(fontFamily: 'DMSans', brightness: Brightness.dark),
           debugShowCheckedModeBanner: false,
-          home: Home()),
+          home: const Home()),
     );
   }
 }
