@@ -21,6 +21,7 @@ class _MeterReadingState extends State<MeterReading> {
       ),
       child: Column(
         children: [
+          const SizedBox(height: 5),
           Consumer<MagnitudeProvider>(
             builder: (context, model, child) =>
                 SfRadialGauge(axes: <RadialAxis>[
@@ -74,7 +75,6 @@ class _MeterReadingState extends State<MeterReading> {
                   ])
             ]),
           ),
-          const SizedBox(height: 5),
         ],
       ),
     );

@@ -21,52 +21,56 @@ class _HomeState extends State<Home> {
       backgroundColor: AppColors.primaryColor,
       body: SingleChildScrollView(
         child: Center(
-          child: Column(
-            children: <Widget>[
-              const MainReading(),
-              const XYZReading(),
-              const MeterReading(),
-              Consumer<MagnitudeProvider>(
-                builder: (context, model, child) => ElevatedButton(
-                    style: ButtonStyle(
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100),
-                            side: const BorderSide(color: Colors.white))),
-                        backgroundColor:
-                            MaterialStateProperty.all(AppColors.primaryColor)),
-                    onPressed: () {
-                      model.changeValues();
-                    },
-                    child: const Text('Start')),
-              ),
-              ElevatedButton(
-                  style: ButtonStyle(
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                          side: const BorderSide(color: Colors.white))),
-                      backgroundColor:
-                          MaterialStateProperty.all(AppColors.primaryColor)),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Visuals()));
-                  },
-                  child: const Text('Visualize')),
-              Consumer<MagnitudeProvider>(
-                builder: (context, model, child) => ElevatedButton(
-                    style: ButtonStyle(
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100),
-                            side: const BorderSide(color: Colors.white))),
-                        backgroundColor:
-                            MaterialStateProperty.all(AppColors.primaryColor)),
-                    onPressed: () {
-                      model.changeValues();
-                    },
-                    child: const Text('Start')),
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Column(
+              children: <Widget>[
+                const SizedBox(
+                  height: 40.0,
+                ),
+                const MainReading(),
+                const SizedBox(height: 10),
+                const Text('Update Interval'),
+                const XYZReading(),
+                const MeterReading(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    ElevatedButton(
+                        style: ButtonStyle(
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(100),
+                                    side:
+                                        const BorderSide(color: Colors.white))),
+                            backgroundColor: MaterialStateProperty.all(
+                                AppColors.primaryColor)),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Visuals()));
+                        },
+                        child: const Text('Visualize')),
+                    Consumer<MagnitudeProvider>(
+                      builder: (context, model, child) => ElevatedButton(
+                          style: ButtonStyle(
+                              shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(100),
+                                      side: const BorderSide(
+                                          color: Colors.white))),
+                              backgroundColor: MaterialStateProperty.all(
+                                  AppColors.primaryColor)),
+                          onPressed: () {
+                            model.changeValues();
+                          },
+                          child: const Text('Start')),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
